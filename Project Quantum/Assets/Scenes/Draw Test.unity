@@ -214,10 +214,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4080845462391686964, guid: 01af521d866a5b146a34e2c16eeec32b, type: 3}
-      propertyPath: trailWidth
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 4080845462391686965, guid: 01af521d866a5b146a34e2c16eeec32b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -265,10 +261,6 @@ PrefabInstance:
     - target: {fileID: 4080845462391686967, guid: 01af521d866a5b146a34e2c16eeec32b, type: 3}
       propertyPath: m_Name
       value: Player Line
-      objectReference: {fileID: 0}
-    - target: {fileID: 6479302473809012484, guid: 01af521d866a5b146a34e2c16eeec32b, type: 3}
-      propertyPath: m_Parameters.widthMultiplier
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01af521d866a5b146a34e2c16eeec32b, type: 3}

@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     float trailWidth = .2f;
 
+    [SerializeField]
+    float moveSensitivity = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +44,8 @@ public class Player : MonoBehaviour
         delta.y /= screenSize.y;
         delta.z = 0;
 
+        delta *= moveSensitivity;
+
         //  Check right edge
         if(transform.position.x + delta.x > halfScreenSize.x)
         {
@@ -52,6 +57,17 @@ public class Player : MonoBehaviour
             delta.x = -halfScreenSize.x - transform.position.x;
         }
 
+        //  Check top edge
+        if (transform.position.y + delta.y > halfScreenSize.y)
+        {
+            delta.y = transform.position.y - halfScreenSize.y;
+        }
+        //  Check bottom edge
+        else if (transform.position.y + delta.y < -halfScreenSize.y)
+        {
+            delta.y = -halfScreenSize.y - transform.position.y;
+        }
+
         transform.Translate(delta);
     }
 
@@ -59,5 +75,14 @@ public class Player : MonoBehaviour
     {
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireCube(Vector3.zero, screenSize);
+    }
+
+    List<Vector3> CheckForLoop()
+    {
+        List<Vector3> meshVerts = new List<Vector3>();
+
+
+
+        return meshVerts;
     }
 }
