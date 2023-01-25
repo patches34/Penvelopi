@@ -10,7 +10,7 @@ A remake of the arcade game [Quantum](https://www.arcade-museum.com/game_detail.
 
 - Rolling
 - Loops
-- List up to 3 words/phrases that convey the feeling or emotion you want the player to experience. (Example: Fast. Action-packed. Mayhem.)
+- FLow
 
 ### Mechanics Summary
 
