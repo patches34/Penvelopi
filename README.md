@@ -23,3 +23,10 @@ A list of what needs to be playable to experience the core of your game. What wi
 ### References
 
 You must add a short description of how this is relevant to your game (mechanic, art, theme, etc.). There is no limit to how many references you can have.
+
+#### [Quantum](https://www.arcade-museum.com/game_detail.php?game_id=9189)
+![Quantum Attari][Quantum Logo]  
+This is the original game that is the main source of inspiration for this game.
+
+
+[Quantum Logo]: https://upload.wikimedia.org/wikipedia/en/5/57/Quantum_Coverart.png
