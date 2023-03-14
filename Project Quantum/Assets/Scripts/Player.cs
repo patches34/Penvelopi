@@ -19,6 +19,14 @@ public class Player : MonoBehaviour
     [SerializeField]
     float moveSensitivity = 1f;
 
+    float sqrTrailLength = 0;
+    Vector3[] trailPositions;
+
+    public float GetTrailLength()
+    {
+        return Mathf.Sqrt(sqrTrailLength);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +42,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        trailPositions = new Vector3[renderer.positionCount];
+        renderer.GetPositions(trailPositions);
+
+        CalcTrailLength();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -84,5 +95,17 @@ public class Player : MonoBehaviour
 
 
         return meshVerts;
+    }
+
+    /// <summary>
+    /// Calculate the squared length of the TrailRender
+    /// </summary>
+    void CalcTrailLength()
+    {
+        sqrTrailLength = 0;
+        for (int i = 1; i < trailPositions.Length; i++)
+        {
+            sqrTrailLength += Vector3.SqrMagnitude(trailPositions[i - 1] - trailPositions[i]);
+        }
     }
 }
