@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trailWidth: 0.05
   moveSensitivity: 0.1
+  gameManager: {fileID: 11400000, guid: 0b667d29d629847419b2092d3111f142, type: 2}
 --- !u!114 &4394073947132769716
 MonoBehaviour:
   m_ObjectHideFlags: 0

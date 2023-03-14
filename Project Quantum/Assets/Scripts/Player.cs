@@ -22,6 +22,9 @@ public class Player : MonoBehaviour
     float sqrTrailLength = 0;
     Vector3[] trailPositions;
 
+    [SerializeField]
+    GameManagerScriptableObject gameManager;
+
     public float GetTrailLength()
     {
         return Mathf.Sqrt(sqrTrailLength);
@@ -107,5 +110,7 @@ public class Player : MonoBehaviour
         {
             sqrTrailLength += Vector3.SqrMagnitude(trailPositions[i - 1] - trailPositions[i]);
         }
+
+        gameManager.trailLength = Mathf.Sqrt(sqrTrailLength);
     }
 }
