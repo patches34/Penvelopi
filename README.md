@@ -22,7 +22,7 @@ A list of what needs to be playable to experience the core of your game. What wi
 
 ### References
 
-You must add a short description of how this is relevant to your game (mechanic, art, theme, etc.). There is no limit to how many references you can have.
+- [Conthran Font](https://www.dafont.com/conthrax.font?fpp=200&l[]=10&l[]=1) - A cool font to use for the game
 
 #### [Quantum](https://www.arcade-museum.com/game_detail.php?game_id=9189)
 ![Quantum Attari][Quantum Logo]  
