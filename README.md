@@ -16,7 +16,7 @@ A remake of the arcade game [Quantum](https://www.arcade-museum.com/game_detail.
 
 List what the game is from a gameplay and/or story perspective.
 
-### Minimal Viable Interaction
+### Minimal Viable Interaction 
 
 A list of what needs to be playable to experience the core of your game. What will the player be able to do? Why only this? We may have a back and forth on this because this will be what I use to measure if you delivered an MVI.
 
