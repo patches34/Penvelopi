@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 1
-  radius: 1
+  radius: 0.25
   useGravity: 0
   useFriction: 0
   coeff: 0.2

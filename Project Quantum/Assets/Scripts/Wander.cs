@@ -39,4 +39,10 @@ public class Wander : Agent
 
         totalForces += Separate();
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, physicsObject.radius);
+    }
 }

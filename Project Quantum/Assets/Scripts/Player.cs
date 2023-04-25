@@ -22,6 +22,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     GameManagerScriptableObject gameManager;
 
+    [SerializeField]
+    float radius = 1f;
+
+    bool isHit = false;
+
     public float GetTrailLength()
     {
         return Mathf.Sqrt(sqrTrailLength);
@@ -40,7 +45,16 @@ public class Player : MonoBehaviour
         trailPositions = new Vector3[renderer.positionCount];
         renderer.GetPositions(trailPositions);
 
-        CalcTrailLength();
+        isHit = CheckForEnemyCollision();
+
+        if (isHit)
+        {
+            ResetTrail();
+        }
+        else
+        {
+            CalcTrailLength();
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -77,10 +91,28 @@ public class Player : MonoBehaviour
         transform.Translate(delta);
     }
 
-    private void OnDrawGizmosSelected()
+    bool CheckForEnemyCollision()
     {
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawWireCube(gameManager.ScreenBounds.center, gameManager.ScreenBounds.size);
+        //
+        //  Exit if AgentManager has not been set
+        //
+        if(gameManager.AgentManager == null)
+            return false;
+
+
+        float sqrDist;
+
+        foreach(Agent enemy in gameManager.AgentManager.Agents)
+        {
+            sqrDist = CalcSqrDistance(enemy.transform.position);
+
+            if(sqrDist <= Mathf.Pow(radius + enemy.physicsObject.radius, 2f))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     List<Vector3> CheckForLoop()
@@ -104,5 +136,27 @@ public class Player : MonoBehaviour
         }
 
         gameManager.trailLength = Mathf.Sqrt(sqrTrailLength);
+    }
+
+    /// <summary>
+    /// Render Gizmos for this script
+    /// </summary>
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.magenta;
+        //Gizmos.DrawWireCube(gameManager.ScreenBounds.center, gameManager.ScreenBounds.size);
+
+        //Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
+    float CalcSqrDistance(Vector3 position)
+    {
+        return Vector3.SqrMagnitude(position - transform.position);
+    }
+
+    void ResetTrail()
+    {
+        renderer.Clear();
     }
 }
