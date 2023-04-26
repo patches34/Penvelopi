@@ -31,8 +31,6 @@ public class PhysicsObject : MonoBehaviour
     [SerializeField]
     float mass = 1f;
 
-    public float radius = 1f;
-
     public bool useGravity, useFriction;
     Vector3 gravity = Vector3.down;
     [SerializeField]

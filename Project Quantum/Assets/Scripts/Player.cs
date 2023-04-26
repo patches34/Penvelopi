@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(TrailRenderer))]
+[RequireComponent (typeof(SpriteInfo))]
 public class Player : MonoBehaviour
 {
     TrailRenderer renderer;
@@ -23,13 +24,13 @@ public class Player : MonoBehaviour
     GameManagerScriptableObject gameManager;
 
     [SerializeField]
-    float radius = 1f;
+    SpriteInfo spriteInfo;
 
     bool isHit = false;
 
-    public float GetTrailLength()
+    private void Awake()
     {
-        return Mathf.Sqrt(sqrTrailLength);
+        spriteInfo = GetComponent<SpriteInfo>();
     }
 
     // Start is called before the first frame update
@@ -106,7 +107,7 @@ public class Player : MonoBehaviour
         {
             sqrDist = CalcSqrDistance(enemy.transform.position);
 
-            if(sqrDist <= Mathf.Pow(radius + enemy.physicsObject.radius, 2f))
+            if(sqrDist <= Mathf.Pow(spriteInfo.Radius + enemy.Radius, 2f))
             {
                 return true;
             }
@@ -143,11 +144,7 @@ public class Player : MonoBehaviour
     /// </summary>
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.magenta;
-        //Gizmos.DrawWireCube(gameManager.ScreenBounds.center, gameManager.ScreenBounds.size);
-
-        //Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        
     }
 
     float CalcSqrDistance(Vector3 position)
@@ -158,5 +155,10 @@ public class Player : MonoBehaviour
     void ResetTrail()
     {
         renderer.Clear();
+    }
+
+    public float GetTrailLength()
+    {
+        return Mathf.Sqrt(sqrTrailLength);
     }
 }

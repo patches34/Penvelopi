@@ -4,10 +4,17 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PhysicsObject))]
+[RequireComponent(typeof(SpriteInfo))]
 public abstract class Agent : MonoBehaviour
 {
-    [SerializeField]
-    public PhysicsObject physicsObject;
+    PhysicsObject physicsObject;
+
+    SpriteInfo spriteInfo;
+
+    public float Radius
+    {
+        get { return spriteInfo.Radius; }
+    }
 
     Vector3 cameraPosition;
     float cameraHalfHeight;
@@ -22,14 +29,16 @@ public abstract class Agent : MonoBehaviour
     [SerializeField]
     GameManagerScriptableObject gameData;
 
+    private void Awake()
+    {
+        physicsObject = GetComponent<PhysicsObject>();
+
+        spriteInfo = GetComponent<SpriteInfo>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        if (physicsObject == null)
-        {
-            physicsObject = GetComponent<PhysicsObject>();
-        }
-
         cameraPosition = Camera.main.transform.position;
         cameraPosition.z = transform.position.z;
 
@@ -42,10 +51,6 @@ public abstract class Agent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*Vector3 mousePos = Mouse.current.position.ReadValue();
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        mousePos.z = transform.position.z;*/
-
         CalculateSteeringForces();
 
         //  Limit total force
@@ -149,7 +154,7 @@ public abstract class Agent : MonoBehaviour
             }
 
             if(dist < closetDist &&
-                dist <= physicsObject.radius)
+                dist <= Radius)
             {
                 closetAgent = agent;
 

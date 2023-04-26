@@ -42,7 +42,6 @@ public class Wander : Agent
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, physicsObject.radius);
+        
     }
 }
