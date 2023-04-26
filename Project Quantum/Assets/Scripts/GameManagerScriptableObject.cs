@@ -25,7 +25,7 @@ public class GameManagerScriptableObject : ScriptableObject
         }
     }
 
-    void CalcScreenBounds()
+    public void CalcScreenBounds()
     {
         screenBounds = new Bounds(Camera.main.transform.position,
             new Vector3(Camera.main.orthographicSize * Camera.main.aspect * 2f, Camera.main.orthographicSize * 2f));

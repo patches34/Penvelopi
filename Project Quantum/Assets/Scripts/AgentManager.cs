@@ -20,6 +20,8 @@ public class AgentManager : MonoBehaviour
     {
         gameData.AgentManager = this;
 
+        gameData.CalcScreenBounds();
+
         #region Agent Spawning
         Vector3 spawnPos = Vector3.zero;
 

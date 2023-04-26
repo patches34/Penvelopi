@@ -38,6 +38,9 @@ public class Player : MonoBehaviour
     {
         renderer = GetComponent<TrailRenderer>();
         renderer.widthMultiplier = trailWidth;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -144,7 +147,8 @@ public class Player : MonoBehaviour
     /// </summary>
     private void OnDrawGizmosSelected()
     {
-        
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(gameManager.ScreenBounds.center, gameManager.ScreenBounds.size);
     }
 
     float CalcSqrDistance(Vector3 position)
