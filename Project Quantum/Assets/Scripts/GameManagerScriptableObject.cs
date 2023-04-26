@@ -16,7 +16,7 @@ public class GameManagerScriptableObject : ScriptableObject
     {
         get
         {
-            if(screenBounds.size.sqrMagnitude <= 0)
+            if(currentAspect <= 0 || currentAspect != Camera.main.aspect)
             {
                 CalcScreenBounds();
             }
@@ -25,9 +25,13 @@ public class GameManagerScriptableObject : ScriptableObject
         }
     }
 
+    float currentAspect;
+
     public void CalcScreenBounds()
     {
         screenBounds = new Bounds(Camera.main.transform.position,
             new Vector3(Camera.main.orthographicSize * Camera.main.aspect * 2f, Camera.main.orthographicSize * 2f));
+
+        currentAspect = Camera.main.aspect;
     }
 }

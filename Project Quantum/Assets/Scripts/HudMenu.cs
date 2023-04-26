@@ -10,6 +10,9 @@ public class HudMenu : MonoBehaviour
     const string k_TRAIL_LENGTH_STR = "Length = {0:0.0}";
 
     [SerializeField]
+    Text loggingLabel;
+
+    [SerializeField]
     GameManagerScriptableObject gameManager;
 
     // Start is called before the first frame update
@@ -21,6 +24,8 @@ public class HudMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        trailLengthLabel.text = string.Format(k_TRAIL_LENGTH_STR, gameManager.trailLength);   
+        trailLengthLabel.text = string.Format(k_TRAIL_LENGTH_STR, gameManager.trailLength);
+
+        loggingLabel.text = string.Format("Resolutions = {0}\nData = {1}", Screen.currentResolution.ToString(), Camera.main.aspect.ToString());
     }
 }

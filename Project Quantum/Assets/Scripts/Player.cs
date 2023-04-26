@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     GameManagerScriptableObject gameManager;
 
-    [SerializeField]
     SpriteInfo spriteInfo;
 
     bool isHit = false;
